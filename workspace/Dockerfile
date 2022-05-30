@@ -235,6 +235,21 @@ RUN if [ ${INSTALL_WP_CLI} = true ]; then \
 ;fi
 
 ###########################################################################
+# Gitlab-runner:
+###########################################################################
+
+# Installing gitlab-runner
+
+USER root
+
+ARG INSTALL_GITLAB_RUNNER=true
+
+RUN if [ ${INSTALL_GITLAB_RUNNER} = true ]; then \
+    curl -LJO "https://gitlab-runner-downloads.s3.amazonaws.com/latest/deb/gitlab-runner_amd64.deb" && \
+    dpkg -i gitlab-runner_amd64.deb \
+;fi
+
+###########################################################################
 USER root
 
 ARG INSTALL_BZ2=false
